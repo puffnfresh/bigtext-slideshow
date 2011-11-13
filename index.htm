@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <title>BigText Slideshow Demo</title>
+    <!-- http://www.colourlovers.com/palette/292482/Terra -->
+    <style>
+      html, body {
+        font-family: Puritan;
+        background: #E8DDCB;
+        color: #031634;
+      }
+      a {
+        color: #033649;
+      }
+      h1, h2, h3, h4, h5, strong {
+        color: #033649;
+      }
+      strong {
+        background: #036564;
+        color: #E8DDCB;
+      }
+      body.dark {
+        background: #036564;
+      }
+      .dark h2 {
+        font-family: 'Paytone One';
+        color: #FFF;
+      }
+      .dark {
+        font-family: 'Droid Sans';
+        color: #E8DDCB;
+      }
+      #links-slide {
+        width: 50%;
+      }
+    </style>
+    <link rel="stylesheet" href="bigtext-slideshow.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script src="http://www.zachleat.com/bigtext/bigtext.js"></script>
+    <script>
+      $(function() {
+        // Change these fonts and reference them in the CSS above.
+        var fonts = ['Paytone One', 'Droid Sans', 'Puritan'];
+
+        WebFont.load({
+          google: {
+            families: fonts
+          },
+          active: function() {
+            // Ugly hack
+            setTimeout(renderSlide, 500);
+          }
+        });
+        function renderSlide() {
+          var current = $('body > div.current');
+          $('body').attr('class', current.attr('class') || '');
+          current.bigtext();
+        }
+        function gotoSlide(slide) {
+          if(!slide.length) return;
+          var current = $('body > div.current').removeClass('current');
+          slide.addClass('current');
+          renderSlide();
+        }
+        function firstSlide() {
+          gotoSlide($('body > div:first'));
+        }
+        function lastSlide() {
+          gotoSlide($('body > div:last'));
+        }
+        function nextSlide() {
+          gotoSlide($('body > div.current').next());
+        }
+        function prevSlide() {
+          gotoSlide($('body > div.current').prev());
+        }
+        $(document).click(nextSlide);
+        $(document).keydown(function(e) {
+          switch(e.keyCode) {
+            case 34:
+            case 39:
+              nextSlide();
+              break;
+            case 33:
+            case 37:
+              prevSlide();
+              break;
+            case 36:
+              firstSlide();
+              break;
+            case 35:
+              lastSlide();
+              break;
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="dark current">
+      <div>BigText</div>
+      <div>Slideshow</div>
+    </div>
+    <div>
+      <div><h2>Hey there!</h2></div>
+      <div>I heard you like <strong>big text</strong></div>
+    </div>
+    <div class="dark">
+      <div><h2>Me too!</h2></div>
+    </div>
+    <div>
+      <div>I wrote tiny bit of JS</div>
+      <div>to help you create nice looking slides</div>
+    </div>
+    <div>
+      <div><h2>Example slide</h2></div>
+      <div><pre><code>&lt;div class="dark"&gt;
+  &lt;div&gt;&lt;h2&gt;Me too!&lt;/h2&gt;&lt;/div&gt;
+&lt;/div&gt;</pre></code></div>
+    </div>
+    <div class="dark">
+      <div><h2>Easy</h2></div>
+    </div>
+    <div id="links-slide">
+      <div><ul>
+        <li><a href="http://brianmckenna.org/blog/bigtext_slideshow">Blog post</a></li>
+        <li><a href="https://bitbucket.org/puffnfresh/bigtext-slideshow">Bitbucket</a></li>
+        <li><a href="https://github.com/zachleat/BigText">BigText</a></li>
+      </ul></div>
+    </div>
+    <div class="dark">
+      <div>Thanks!</div>
+    </div>
+  </body>
+</html>
