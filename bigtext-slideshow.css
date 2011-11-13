@@ -24,9 +24,17 @@ body > div {
     -webkit-box-pack: center;
     -webkit-box-orient: vertical;
     -webkit-box-align: stretch;
+    -moz-box-pack: center;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    box-pack: center;
+    box-orient: vertical;
+    box-align: stretch;
     display: none;
     width: 70%;
 }
 body > div.current {
     display: -webkit-box;
+    display: -moz-box;
+    display: box;
 }
