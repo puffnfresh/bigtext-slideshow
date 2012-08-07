@@ -1,0 +1,14 @@
+span.variable-name   { color: #268bd2; }
+span.variable-name a { color: #268bd2; }
+span.string   { color: #2aa198; }
+span.string a { color: #2aa198; }
+span.constant   { color: #268bd2; }
+span.constant a { color: #268bd2; }
+span.type   { color: #b58900; }
+span.type a { color: #b58900; }
+span.keyword   { color: #859900; }
+span.keyword a { color: #859900; }
+span.comment   { color: #717979; }
+span.comment a { color: #717979; }
+span.comment-delimiter   { color: #717979; }
+span.comment-delimiter a { color: #717979; }
